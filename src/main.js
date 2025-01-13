@@ -200,13 +200,19 @@ function startRecording() {
     document.getElementById('startRecordingButton').disabled = true;
     document.getElementById('stopRecordingButton').disabled = true;
     
+    const countdownElement = document.getElementById('countdown');
+    countdownElement.classList.remove('hidden');
+    
     let countdown = 4;
+    countdownElement.textContent = countdown;
+    
     countdownInterval = setInterval(() => {
+        countdown--;
         if (countdown > 0) {
-            alert(`La grabación comenzará en ${countdown} segundos`);
-            countdown--;
+            countdownElement.textContent = countdown;
         } else {
             clearInterval(countdownInterval);
+            countdownElement.classList.add('hidden');
             isRecording = true;
             document.getElementById('stopRecordingButton').disabled = false;
             startMetronome();
@@ -216,6 +222,7 @@ function startRecording() {
 
 function stopRecording() {
     isRecording = false;
+    stopCountdown();
     document.getElementById('startRecordingButton').disabled = false;
     document.getElementById('stopRecordingButton').disabled = true;
     document.getElementById('saveButton').disabled = false;
@@ -254,6 +261,15 @@ function stopMetronome() {
     if (metronome) {
         clearInterval(metronome);
         metronome = null;
+    }
+}
+
+function stopCountdown() {
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+        document.getElementById('countdown').classList.add('hidden');
+        document.getElementById('startRecordingButton').disabled = false;
+        document.getElementById('stopRecordingButton').disabled = true;
     }
 }
 
