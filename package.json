@@ -1,0 +1,20 @@
+{
+  "name": "audio-visualizer",
+  "version": "1.0.0",
+  "description": "Visualizador de audio a color en tiempo real",
+  "main": "index.html",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.3.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "vite": "^4.3.0"
+  }
+}
+

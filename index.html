@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Audio a Color</title>
+    <link href="./src/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
+    <div class="w-full max-w-4xl bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-2xl font-bold mb-4 text-center">Visualizador de Audio a Color</h1>
+        <div class="flex flex-wrap justify-center gap-2 mb-4">
+            <button id="startButton" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                Iniciar Micrófono
+            </button>
+            <button id="importButton" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                Importar Audio
+            </button>
+            <button id="playButton" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded" disabled>
+                Reproducir
+            </button>
+            <button id="clearButton" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                Borrar Pintura
+            </button>
+            <button id="startRecordingButton" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">
+                Iniciar Grabación
+            </button>
+            <button id="stopRecordingButton" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded" disabled>
+                Detener Grabación
+            </button>
+            <button id="saveButton" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded" disabled>
+                Guardar JPG
+            </button>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 mb-4">
+            <div>
+                <label for="timeSignature" class="block text-sm font-medium text-gray-700">Compás:</label>
+                <select id="timeSignature" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                    <option value="4/4">4/4</option>
+                    <option value="3/4">3/4</option>
+                    <option value="6/8">6/8</option>
+                </select>
+            </div>
+            <div>
+                <label for="tempo" class="block text-sm font-medium text-gray-700">Tempo (BPM):</label>
+                <input type="number" id="tempo" value="120" min="40" max="240" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+            </div>
+            <div>
+                <label for="metronome" class="block text-sm font-medium text-gray-700">Metrónomo:</label>
+                <button id="metronomeButton" class="mt-1 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
+                    Iniciar Metrónomo
+                </button>
+            </div>
+        </div>
+        <canvas id="visualizer" class="w-full h-64 bg-gray-200 rounded mb-4"></canvas>
+        <div id="paintingContainer" class="w-full bg-gray-200 rounded p-2 overflow-auto" style="height: 300px;">
+            <canvas id="painting"></canvas>
+        </div>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
+
